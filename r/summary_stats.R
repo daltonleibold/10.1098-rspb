@@ -9,7 +9,7 @@ setwd(here::here())
 # read data
 data <- read_csv(here::here("data", "data.csv"))
 # source custom functions
-source(here::here("r", "func.r"))
+source(here::here("r", "func.R"))
 # set flextable defaults
 set_flextable_defaults(
   font.family = "Arial",
@@ -195,7 +195,7 @@ set_flextable_defaults(
                 .fns = as.character))
 
 # make a full table of all the summary statistics
-tbl.s.1 <- .tbl.1.a %>%
+.tbl.s.1 <- .tbl.1.a %>%
   # bind all the tables together
   bind_rows(.tbl.1.b, .tbl.1.c, .tbl.1.d) %>%
   # arrange by species
@@ -210,7 +210,7 @@ tbl.s.1 <- .tbl.1.a %>%
          `Control,28°C`, `CORT,28°C`)
 
 # make a subset for tbl.1
-tbl.1 <- tbl.s.1 %>%
+.tbl.1 <- .tbl.s.1 %>%
   filter(Trait == "Eggs (Died)"
          | Trait == "Eggs (Hatched)"
          | Trait == "Egg Mortality"
@@ -219,18 +219,12 @@ tbl.1 <- tbl.s.1 %>%
          | Trait == "Hatchling Mass (g)"
          )
 
-# subset into each species
-tbl.1.a <- tbl.1 %>%
-  filter(Species == "L. delicata")
-tbl.1.b <- tbl.1 %>%
-  filter(Species == "L. guichenoti")
-
 # convert each table to a flextable
-tbl.s.1 <- .fx.ft(tbl.s.1)
-tbl.1 <- .fx.ft(tbl.1)
-tbl.1.a <- .fx.ft(tbl.1.a)
-tbl.1.b <- .fx.ft(tbl.1.b)
+.tbl.s.1 <- .fx.ft(.tbl.s.1)
+.tbl.1 <- .fx.ft(.tbl.1)
 
 # save the flextables
-save_as_image(tbl.s.1, here("output", "tables", "tbl s1 - all summary stats.png"))
-save_as_image(tbl.1, here("output", "tables", "tbl1 - summary stats.png"))
+save_as_image(.tbl.s.1, here("output", "tables", "tbl s1 - all summary stats.png"))
+save_as_image(.tbl.1, here("output", "tables", "tbl1 - summary stats.png"))
+
+summary.stats <- .tbl.s.1

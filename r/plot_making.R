@@ -16,10 +16,13 @@ pacman::p_load(tidyverse, # for data wrangling
                gridExtra, # for grid.arrange
                here) # for finding your files
 # make a colorblind palette for plots
+
 # set working directory
 setwd(here())
+
 # source custom functions
 source(here("r", "func.r"))
+
 # code for making custom plots
 custom_theme <- theme_classic(base_size = 24) +
   #adjust axis title position
@@ -42,14 +45,17 @@ custom_theme <- theme_classic(base_size = 24) +
   theme(axis.ticks = element_line(color = "black")) + 
   #remove border from facet labels
   theme(strip.background = element_blank()) 
+
 # make a colorblind palette for plots
 cbPalette <- c("#ed7d31", "#f8cbad", 
                "#4472c4", "#b4c7e7")
 cbPalette2 <- c("#b4c7e7", "#4472c4", 
                 "#f8cbad", "#ed7d31")
+
 # read in the raw data for making raw figures
 data <- read_csv(here("data", "data.csv"))
-# source models
+
+# source models for making model figures
 brm.eggox.ld <- readRDS(here("output", "models", "eggox_ld.rds"))
 brm.eggox.lg <- readRDS(here("output", "models", "eggox_lg.rds"))
 brm.hmorph.ld <- readRDS(here("output", "models", "hmorph_ld.rds"))
@@ -60,7 +66,7 @@ brm.hmorph.lg <- readRDS(here("output", "models", "hmorph_lg.rds"))
 # rationale is that these help demonstrate the non-significant tendencies that aren't captured in the models of best fit
 # for each of the models, we'll extract the posteriors of the main effects terms, excluding egg mass. we'll use these to calculate the predicted posterior distributions of each treatment level for the respective trait. for the multivariate model, we'll extract mass and svl separately. 
 
-plot.eggox.ld <- brm.eggox.ld %>%
+.plot.eggox.ld <- brm.eggox.ld %>%
   # extract the posterior distributions
   posterior_samples() %>%
   # select only the main effects terms
@@ -78,7 +84,7 @@ plot.eggox.ld <- brm.eggox.ld %>%
                names_to = "trt",
                values_to = "value") 
 
-plot.eggox.lg <- brm.eggox.lg %>%
+.plot.eggox.lg <- brm.eggox.lg %>%
   # extract the posterior distributions
   posterior_samples() %>%
   # select only the main effects terms
@@ -96,7 +102,7 @@ plot.eggox.lg <- brm.eggox.lg %>%
                names_to = "trt",
                values_to = "value")
 
-plot.hmass.ld <- brm.hmorph.ld %>%
+.plot.hmass.ld <- brm.hmorph.ld %>%
   # extract the posterior distributions
   posterior_samples() %>%
   # select only the main effects terms
@@ -117,7 +123,7 @@ plot.hmass.ld <- brm.hmorph.ld %>%
                names_to = "trt",
                values_to = "value")
 
-plot.hmass.lg <- brm.hmorph.lg %>%
+.plot.hmass.lg <- brm.hmorph.lg %>%
   # extract the posterior distributions
   posterior_samples() %>%
   # select only the main effects terms
@@ -138,7 +144,7 @@ plot.hmass.lg <- brm.hmorph.lg %>%
                names_to = "trt",
                values_to = "value")
 
-plot.hsvl.ld <- brm.hmorph.ld %>%
+.plot.hsvl.ld <- brm.hmorph.ld %>%
   # extract the posterior distributions
   posterior_samples() %>%
   # select only the main effects terms
@@ -159,7 +165,7 @@ plot.hsvl.ld <- brm.hmorph.ld %>%
                names_to = "trt",
                values_to = "value")
 
-plot.hsvl.lg <- brm.hmorph.lg %>%
+.plot.hsvl.lg <- brm.hmorph.lg %>%
   # extract the posterior distributions
   posterior_samples() %>%
   # select only the main effects terms
@@ -181,12 +187,12 @@ plot.hsvl.lg <- brm.hmorph.lg %>%
                values_to = "value")
 
 # bind all the extracted posteriors together
-plot.data <- bind_rows(plot.eggox.ld,
-                       plot.eggox.lg,
-                       plot.hmass.ld,
-                       plot.hmass.lg,
-                       plot.hsvl.ld,
-                       plot.hsvl.lg) %>%
+plot.data <- bind_rows(.plot.eggox.ld,
+                       .plot.eggox.lg,
+                       .plot.hmass.ld,
+                       .plot.hmass.lg,
+                       .plot.hsvl.ld,
+                       .plot.hsvl.lg) %>%
   # make a tracer column for pivoting
   group_by(trait, species, trt) %>%
   mutate(tracer = row_number()) %>%
@@ -360,58 +366,43 @@ raw.hsvl <- raw.data %>%
   ylab("Hatchling SVL (mm)") +
   custom_theme
 
-fig.2.a.i <- fig.eggox
-fig.2.a.ii <- raw.eggox
-fig.2.a <- ggarrange(fig.2.a.i, fig.2.a.ii,
-                     ncol = 2, nrow = 1)
-fig.2.b.i <- fig.hmass
-fig.2.b.ii <- raw.hmass
-fig.2.b <- ggarrange(fig.2.b.i, fig.2.b.ii,
-                     ncol = 2, nrow = 1)
-fig.2.c.i <- fig.hsvl
-fig.2.c.ii <- raw.hsvl
-fig.2.c <- ggarrange(fig.2.c.i, fig.2.c.ii,
-                     ncol = 2, nrow = 1)
-fig.2 <- ggarrange(fig.2.a.i, fig.2.a.ii, 
-                   fig.2.b.i, fig.2.b.ii,
-                   # fig.2.c.i, fig.2.c.ii, 
-                   ncol = 2, nrow = 2)
 
+ggsave(plot = fig.eggox,
+       filename = "fig_2_a_i - model egg mortality.png", 
+       path = here("output", "figures", "fig2 - data plots"),
+       width = 3600,
+       height = 2400,
+       units = "px")
+ggsave(plot = raw.eggox,
+       filename = "fig_2_a_ii - raw egg mortality.png", 
+       path = here("output", "figures", "fig2 - data plots"),
+       width = 3600,
+       height = 2400,
+       units = "px")
+ggsave(plot = fig.hmass,
+       filename = "fig_2_b_i - model hatchling mass.png", 
+       path = here("output", "figures", "fig2 - data plots"),
+       width = 3600,
+       height = 2400,
+       units = "px")
+ggsave(plot = raw.hmass,
+       filename = "fig_2_b_ii - raw hatchling mass.png", 
+       path = here("output", "figures", "fig2 - data plots"),
+       width = 3600,
+       height = 2400,
+       units = "px")
+ggsave(plot = fig.hsvl,
+       filename = "fig_2_c_i - model hatchling svl.png", 
+       path = here("output", "figures", "fig2 - data plots"),
+       width = 3600,
+       height = 2400,
+       units = "px")
+ggsave(plot = raw.hsvl,
+       filename = "fig_2_c_ii - raw hatchling svl.png", 
+       path = here("output", "figures", "fig2 - data plots"),
+       width = 3600,
+       height = 2400,
+       units = "px")
 
-ggsave(plot = fig.2.a.i,
-       filename = "fig_2_a_i.png", 
-       path = here("output", "figs", "fig2"),
-       width = 3600,
-       height = 2400,
-       units = "px")
-ggsave(plot = fig.2.a.ii,
-       filename = "fig_2_a_ii.png", 
-       path = here("output", "figs", "fig2"),
-       width = 3600,
-       height = 2400,
-       units = "px")
-ggsave(plot = fig.2.b.i,
-       filename = "fig_2_b_i.png", 
-       path = here("output", "figs", "fig2"),
-       width = 3600,
-       height = 2400,
-       units = "px")
-ggsave(plot = fig.2.b.ii,
-       filename = "fig_2_b_ii.png", 
-       path = here("output", "figs", "fig2"),
-       width = 3600,
-       height = 2400,
-       units = "px")
-ggsave(plot = fig.2.c.i,
-       filename = "fig_2_c_i.png", 
-       path = here("output", "figs", "fig2"),
-       width = 3600,
-       height = 2400,
-       units = "px")
-ggsave(plot = fig.2.c.ii,
-       filename = "fig_2_c_ii.png", 
-       path = here("output", "figs", "fig2"),
-       width = 3600,
-       height = 2400,
-       units = "px")
+rm(raw.data)
 
