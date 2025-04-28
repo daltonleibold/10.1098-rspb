@@ -1,0 +1,31 @@
+Species,Trait,Control + Cold,Control + Hot,CORT + Cold,CORT + Hot
+L. delicata,Eggs (Died),16,17,21,32
+L. delicata,Eggs (Hatched),152,149,145,141
+L. delicata,Egg Mortality,9.5%,10.2%,12.7%,18.5%
+L. delicata,Egg Mass (All),0.143 ± 0.028,0.145 ± 0.026,0.145 ± 0.026,0.145 ± 0.024
+L. delicata,Egg Length (All),7.945 ± 0.731,7.89 ± 0.567,7.946 ± 0.59,8.018 ± 0.618
+L. delicata,Egg Width (All),5.108 ± 0.544,5.153 ± 0.558,5.135 ± 0.522,5.097 ± 0.499
+L. delicata,Egg Mass (Died),0.126 ± 0.032,0.142 ± 0.039,0.138 ± 0.024,0.137 ± 0.03
+L. delicata,Egg Length (Died),8.124 ± 1.656,8.051 ± 0.489,7.984 ± 0.646,7.878 ± 0.592
+L. delicata,Egg Width (Died),4.714 ± 0.567,4.895 ± 0.63,5.034 ± 0.355,4.958 ± 0.618
+L. delicata,Egg Mass (Hatched),0.145 ± 0.027,0.146 ± 0.024,0.146 ± 0.026,0.147 ± 0.022
+L. delicata,Egg Length (Hatched),7.926 ± 0.56,7.871 ± 0.574,7.94 ± 0.584,8.05 ± 0.621
+L. delicata,Egg Width (Hatched),5.149 ± 0.526,5.182 ± 0.544,5.15 ± 0.541,5.128 ± 0.464
+L. delicata,Hatch Mass (g),0.112 ± 0.013,0.106 ± 0.012,0.108 ± 0.013,0.105 ± 0.012
+L. delicata,Hatch SVL (mm),18.549 ± 0.813,18.283 ± 0.88,18.266 ± 0.881,18.14 ± 0.879
+L. delicata,Hatch TL (mm),25.331 ± 1.662,25.538 ± 1.687,24.849 ± 1.698,24.794 ± 1.993
+L. guichenoti,Eggs (Died),7,8,9,12
+L. guichenoti,Eggs (Hatched),134,131,127,132
+L. guichenoti,Egg Mortality,5%,5.8%,6.6%,8.3%
+L. guichenoti,Egg Mass (All),0.182 ± 0.029,0.184 ± 0.03,0.186 ± 0.032,0.186 ± 0.036
+L. guichenoti,Egg Length (All),8.393 ± 0.655,8.451 ± 0.683,8.494 ± 0.644,8.541 ± 0.733
+L. guichenoti,Egg Width (All),5.586 ± 0.49,5.596 ± 0.448,5.623 ± 0.487,5.586 ± 0.529
+L. guichenoti,Egg Mass (Died),0.132 ± 0.026,0.176 ± 0.046,0.182 ± 0.059,0.169 ± 0.043
+L. guichenoti,Egg Length (Died),8.011 ± 0.553,8.64 ± 0.58,8.677 ± 0.828,8.619 ± 0.71
+L. guichenoti,Egg Width (Died),4.881 ± 0.777,5.518 ± 0.534,5.613 ± 0.862,5.388 ± 0.636
+L. guichenoti,Egg Mass (Hatched),0.184 ± 0.027,0.185 ± 0.029,0.186 ± 0.029,0.188 ± 0.035
+L. guichenoti,Egg Length (Hatched),8.413 ± 0.656,8.439 ± 0.69,8.481 ± 0.631,8.534 ± 0.737
+L. guichenoti,Egg Width (Hatched),5.623 ± 0.445,5.601 ± 0.444,5.624 ± 0.455,5.605 ± 0.517
+L. guichenoti,Hatch Mass (g),0.142 ± 0.016,0.14 ± 0.017,0.14 ± 0.015,0.137 ± 0.017
+L. guichenoti,Hatch SVL (mm),19.869 ± 0.73,19.816 ± 0.865,19.842 ± 0.778,19.656 ± 0.91
+L. guichenoti,Hatch TL (mm),26.123 ± 1.941,26.384 ± 2.035,25.967 ± 1.71,26.008 ± 2.241
