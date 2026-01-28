@@ -1,7 +1,6 @@
 #---
-#title: "func"
-#author: "Dalton C. Leibold"
-#date: 1/11/2023
+#title: "func.R"
+# custom functions script
 #---
 
 pacman::p_load(tidyverse)
