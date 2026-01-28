@@ -3,7 +3,7 @@
 > - denotes a single file
 $ - denotes a column within a csv or spreadsheet
 ----
-# Leibold_et_al_2025 - Repository for data, code, and supplementary materials for Leibold et al. 2025 ('Life-history strategy mediates the effects of multiple developmental stressors on Australian skinks').
+# RSPB-2025-1226 - Repository for data, code, and supplementary materials for RSPB-2025-1226 ('Life-history strategy mediates the effects of multiple developmental stressors on Australian skinks' submitted to Proceedings of the Royal Society B).
 
 > `README.md` - a read me file explaining what is in this repo; you're reading it right now! 
 > `refs.bib` - a bibtex file containing bibliographic information on all the papers cited; has been hand checked for rendering a references list but may still have some issues in the metadata
