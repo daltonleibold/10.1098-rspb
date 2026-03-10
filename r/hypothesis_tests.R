@@ -116,6 +116,7 @@ source(here::here("r", "func.R"))
 .tbl.2.b <- bind_rows(.tbl.2.b.i, .tbl.2.b.ii)
 .tbl.2.c <- bind_rows(.tbl.2.c.i, .tbl.2.c.ii)
 .tbl.2 <- bind_rows(.tbl.2.a, .tbl.2.b)
+write_csv(.tbl.2, here("output", "tables", "tbl2_stats_tests.csv"))
 # --- make flextables
 .tbl.2.a.i <- .fx.ft(.tbl.2.a.i)
 .tbl.2.a.ii <- .fx.ft(.tbl.2.a.ii)
@@ -254,6 +255,7 @@ stats.tests <- .tbl.2
   # round everything to 3 decimal places for easy viewing
   mutate(across(.cols = Estimate:pMCMC,
                 .fns = ~round(.x, digits = 3)))
+write_csv(.tbl.s.2, here("output", "tables", "tbls2_pairwise_treatment_comparisons.csv"))
 
 # split the supplementary table into components for summary RMD
 .tbl.s.2.a <- .tbl.s.2 %>%
@@ -290,7 +292,7 @@ save_as_image(.tbl.s.2, here("output", "tables", "tbl s2 - treatment pairwise co
 trt.pairwise <- .tbl.s.2
 #----
 # - run pairwise comparisons between species within each treatment group for each response variable
-.tbl.3 <- .post %>%
+.tbl.s3 <- .post %>%
   pivot_longer(3:ncol(.),
                names_to = "Treatment",
                values_to = "value") %>%
@@ -310,11 +312,15 @@ trt.pairwise <- .tbl.s.2
           `u-95% CI` = quantile(value, 0.975),
           pMCMC = pmcmc(value)) %>%
   mutate(across(.cols = Estimate:pMCMC,
-                .fns = ~round(.x, digits = 3))) %>%
+                .fns = ~round(.x, digits = 3))) 
+
+write_csv(.tbl.s3, here("output", "tables", "tbls3_pairwise_species_comparisons.csv"))
+
+.tbl.s3 <- .tbl.s3 %>%
   .fx.ft()
 
 # save the flextable for supplementary table 3 (species level pairwise comparisons)
-save_as_image(.tbl.3, here("output", "tables", "tbl s3 - species comparisons.png"))
+save_as_image(.tbl.s3, here("output", "tables", "tbl s3 - species comparisons.png"))
 
 # checking differences in main effects between species
 .tbl.3 <- .post %>%
@@ -345,7 +351,11 @@ save_as_image(.tbl.3, here("output", "tables", "tbl s3 - species comparisons.png
           pMCMC = pmcmc(value)) %>%
   mutate(across(.cols = Estimate:pMCMC,
                 .fns = ~round(.x, digits = 3))) %>%
-  filter(Trait != "Hatchling SVL") %>%
+  filter(Trait != "Hatchling SVL") 
+
+write_csv(.tbl.3, here("output", "tables", "tbl3_species_comparisons.csv"))
+
+.tbl.3 %>%
   .fx.ft()
 # save the flextable for species-level comparisons of main effects
 save_as_image(.tbl.3, here("output", "tables", "tbl3 - between species main effects comparison.png"))

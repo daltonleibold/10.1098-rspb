@@ -1,0 +1,25 @@
+Trait,Species,Contrast,Estimate,Est.Error,l-95% CI,u-95% CI,pMCMC
+Egg Mortality,L. delicata,Intercept,-3.651,0.456,-4.615,-2.83,0
+Egg Mortality,L. delicata,"Stress
+[CORT - Control]",0.696,0.309,0.109,1.328,0.02
+Egg Mortality,L. delicata,"Temperature
+[28°C - 23°C]",0.366,0.3,-0.228,0.946,0.22
+Egg Mortality,L. delicata,Egg Mass,-16.062,8.457,-32.985,0.637,0.057
+Egg Mortality,L. guichenoti,Intercept,-4.004,0.581,-5.267,-3,0
+Egg Mortality,L. guichenoti,"Stress
+[CORT - Control]",0.463,0.404,-0.323,1.273,0.25
+Egg Mortality,L. guichenoti,"Temperature
+[28°C - 23°C]",0.22,0.397,-0.561,1.004,0.578
+Egg Mortality,L. guichenoti,Egg Mass,-19.081,7.645,-34.265,-4.326,0.011
+Hatchling Mass,L. delicata,Intercept,0.004,0.001,0.002,0.005,0
+Hatchling Mass,L. delicata,"Stress
+[CORT - Control]",-0.003,0.001,-0.004,-0.002,0
+Hatchling Mass,L. delicata,"Temperature
+[28°C - 23°C]",-0.004,0.001,-0.005,-0.003,0
+Hatchling Mass,L. delicata,Egg Mass,0.31,0.022,0.267,0.353,0
+Hatchling Mass,L. guichenoti,Intercept,0.003,0.001,0.002,0.005,0
+Hatchling Mass,L. guichenoti,"Stress
+[CORT - Control]",-0.003,0.001,-0.005,-0.001,0
+Hatchling Mass,L. guichenoti,"Temperature
+[28°C - 23°C]",-0.003,0.001,-0.005,-0.001,0.001
+Hatchling Mass,L. guichenoti,Egg Mass,0.297,0.02,0.257,0.337,0

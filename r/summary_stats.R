@@ -3,7 +3,7 @@
 # prepares tbl1
 
 #  load libraries
-pacman::p_load(tidyverse, flextable)
+pacman::p_load(tidyverse, flextable, here)
 # set working directory to project root
 setwd(here::here())
 # read data
@@ -219,6 +219,9 @@ set_flextable_defaults(
          | Trait == "Hatchling Mass (g)"
          )
 
+write_csv(.tbl.1, here("output", "tables", "tbl1_summary_stats.csv"))
+write_csv(.tbl.s.1, here("output", "tables", "tbls1_full_summary_stats.csv"))
+
 # convert each table to a flextable
 .tbl.s.1 <- .fx.ft(.tbl.s.1)
 .tbl.1 <- .fx.ft(.tbl.1)
@@ -226,5 +229,5 @@ set_flextable_defaults(
 # save the flextables
 save_as_image(.tbl.s.1, here("output", "tables", "tbl s1 - all summary stats.png"))
 save_as_image(.tbl.1, here("output", "tables", "tbl1 - summary stats.png"))
-
+save_as_docx(.tbl.1, path = here("output", "tables", "tbl1 - summary stats.docx"))
 summary.stats <- .tbl.s.1

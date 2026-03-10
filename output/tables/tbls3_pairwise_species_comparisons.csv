@@ -1,0 +1,9 @@
+Trait,Treatment,Contrast,Estimate,Est.Error,l-95% CI,u-95% CI,pMCMC
+Egg Mortality,"CORT,23°C",[L. delicata] - [L. guichenoti],0.586,0.007,-0.688,1.983,0.377
+Egg Mortality,"CORT,28°C",[L. delicata] - [L. guichenoti],0.732,0.007,-0.492,2.085,0.257
+Egg Mortality,"Control,23°C",[L. delicata] - [L. guichenoti],0.352,0.007,-1.036,1.843,0.621
+Egg Mortality,"Control,28°C",[L. delicata] - [L. guichenoti],0.499,0.007,-0.89,1.993,0.5
+Hatchling Mass,"CORT,23°C",[L. delicata] - [L. guichenoti],0,0,-0.002,0.003,0.893
+Hatchling Mass,"CORT,28°C",[L. delicata] - [L. guichenoti],-0.001,0,-0.004,0.001,0.325
+Hatchling Mass,"Control,23°C",[L. delicata] - [L. guichenoti],0,0,-0.002,0.003,0.851
+Hatchling Mass,"Control,28°C",[L. delicata] - [L. guichenoti],-0.001,0,-0.004,0.001,0.358
